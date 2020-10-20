@@ -9,15 +9,23 @@ import { BsFillTrashFill, BsPencil } from "react-icons/bs";
 //IMAGES
 import CampImage from "../../assets/images/imagem01.png";
 import { Link } from 'react-router-dom';
+import { Camp } from '../../models/CampModel';
 
-function CampItem() {
+
+interface CampItemProps {
+  camp: Camp
+}
+
+function CampItem(props: CampItemProps) {
+  const {camp} = props
+
   return (
     <div className="card">
-      <img src={CampImage} alt="Camping"/>
+      <img src={camp.image} alt="Camping"/>
       <div className="content">
-        <h4>Camping Party</h4>
-        <p>Rodovia Presitende Catelo Branco, km 25</p>
-        <p>Cotia - SP</p>
+  <h4>{camp.name}</h4>
+  <p>{camp.location.address}</p>
+        <p>{camp.location.city} - {camp.location.state}</p>
       </div>
       <div className="btn-group">
         <button className="trash">

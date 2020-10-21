@@ -14,7 +14,7 @@ function Register() {
   const [stateUf, setStateUf] = useState('');
   const [city, setCity] = useState('');
   const [address, setAddress] = useState('');
-
+  const [image, setImage] = useState('');
 
 
   function handleSubmit(event: FormEvent) {
@@ -25,9 +25,9 @@ function Register() {
       contact,
       stateUf,
       city,
-      address
+      address,
+      image
     })
-    
   }
 
   return (
@@ -50,11 +50,13 @@ function Register() {
           />
 
           <label>Estado</label>
-          <select id="estado" name="estado"
+          <select 
+          id="estado" 
+          name="estado"
           value={stateUf}
           onChange={event => setStateUf(event.target.value)}
           >
-            <option selected disabled>
+            <option selected>
               Selecione o estado
             </option>
             <option value="AC">Acre</option>
@@ -121,6 +123,16 @@ function Register() {
             value={description}
             onChange={(event) => setDescription(event.target.value)}
           />
+
+            <label htmlFor="inputFile"  className='label-input-file'>Selecionar foto</label>
+            <input 
+              id="inputFile" 
+              type="file" 
+              title="Selecionar imagem" 
+              className='input-file'
+              onChange={(event) => setImage(event.target.value)}  
+            />
+
         <button type="submit">Cadastrar</button>
         </form>
 

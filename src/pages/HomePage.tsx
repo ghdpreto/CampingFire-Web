@@ -41,7 +41,7 @@ function HomePage() {
       <div className="container">
         <div className="cards">
           {camps?.map((camp) => (
-            <Link to="/Camping" className="link-to">
+            <Link to={`/camping/${camp._id}`} className="link-to">
               <CampItem key={camp._id} camp={camp}/>
             </Link>
           ))}

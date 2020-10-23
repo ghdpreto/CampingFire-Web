@@ -13,8 +13,8 @@ function Routes() {
             <Switch>
                 <Route path="/" exact component={HomePage} />
                 <Route path="/Register" component={Register} />
-                <Route path="/EditCamping" component={EditCamping} />
-                <Route path="/Camping" component={Camping} />
+                <Route path="/edit-camping/:id" component={EditCamping} />
+                <Route path="/camping/:id" component={Camping} />
             </Switch>
         </BrowserRouter>
     );

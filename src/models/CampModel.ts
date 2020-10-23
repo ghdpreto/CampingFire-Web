@@ -1,9 +1,3 @@
-export interface Location {
-    state: string;
-    city: string;
-    address: string;
-}
-
 export interface Camp {
     _id: number;
     image: string;
@@ -11,4 +5,10 @@ export interface Camp {
     description: string;
     location: Location;
     contact: number;
+}
+
+export interface Location {
+    state: string;
+    city: string;
+    address: string;
 }

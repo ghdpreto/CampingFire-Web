@@ -44,7 +44,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.btn-group span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #EC9121;
 }
 
 .trash {

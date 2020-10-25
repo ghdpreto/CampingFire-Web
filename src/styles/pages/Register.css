@@ -72,6 +72,7 @@
 }
 
 #page-register .container button {
+  align-self: center;
   margin-top: 3rem;
   width: 18.5rem;
   height: 2.5rem;
@@ -87,3 +88,15 @@
   background-color: #00cc00;
 }
 
+#page-register .container .label-input-file{
+  margin-top: 2rem;
+  text-align: center;
+  border: 1px solid;
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+#page-register .container .input-file {
+  display: none;
+  cursor: pointer;
+}

@@ -6,8 +6,11 @@ import '../styles/pages/Register.css';
 
 // IMAGES
 import LogoImg from '../assets/images/logo.png';
+import api from '../services/api';
+
 
 function Register() {
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [contact, setContact] = useState('');
@@ -17,7 +20,7 @@ function Register() {
   const [image, setImage] = useState('');
 
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
     console.log({
       name,
@@ -26,7 +29,24 @@ function Register() {
       stateUf,
       city,
       address,
-      image
+      image,
+    })
+
+
+    const dataBody = {
+      name,
+      description,
+      image,
+      contact,
+      location: {
+        address,
+        city,
+        state: stateUf
+      }
+    }
+
+    api.post(`campings`, dataBody).then((response) => {
+      console.log(response)
     })
   }
 
@@ -40,11 +60,12 @@ function Register() {
       </Link>
       <div className="container">
         <h1>Cadastrar</h1>
-        <form onSubmit={handleSubmit}>
+        <form id='form' onSubmit={handleSubmit}>
           <label>Nome do local</label>
           <input
             type="text"
             placeholder="Digite o nome do local..."
+            name='name'
             value={name}
             onChange={(event) => setName(event.target.value)}
           />
@@ -124,21 +145,18 @@ function Register() {
             onChange={(event) => setDescription(event.target.value)}
           />
 
-            <label htmlFor="inputFile"  className='label-input-file'>Selecionar foto</label>
-            <input 
-              id="inputFile" 
-              type="file" 
-              title="Selecionar imagem" 
-              className='input-file'
-              onChange={(event) => setImage(event.target.value)}  
-            />
+          <label>Image</label>
+          <input
+            type="url"
+            placeholder="Cole a URL da imagem..."
+            value={image}
+            onChange={(event) => setImage(event.target.value)}
+          />
 
         <button type="submit">Cadastrar</button>
         </form>
-
       </div>
     </div>
   );
 }
-
 export default Register;

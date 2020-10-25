@@ -19,10 +19,10 @@ function HomePage() {
 
   function searchCamp(value: string) {
     if (value === '') {
-      console.log('Digite um valor');
+      alert('Digite uma cidade!');
     } else {
       api
-        .get(`campings/${value}`)
+        .get(`campings?city=${value}`)
         .then((response) => {
           return setCamps(response.data);
         })
@@ -78,7 +78,6 @@ function HomePage() {
 
       <div className="container">
         <div className="cards">
-
           {isLoading ? (
             <h1>Carregando...</h1>
           ) : !camps.length ? (

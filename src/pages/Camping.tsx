@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Route, useParams } from 'react-router-dom';
+import { Link, Route, useHistory, useParams } from 'react-router-dom';
 import { BsFillTrashFill, BsPencil } from 'react-icons/bs';
 
 // CSS STYLES
@@ -17,12 +17,27 @@ interface CampParams {
 
 function Camping() {
   const [camp, setCamp] = useState<Camp>();
+  const goBack = useHistory();
 
   const params = useParams<CampParams>();
 
+  function deleteCamp(id: number ) {
+    console.log(id)
+    api.delete(`campings/${id}`).then(() => {
+      return (
+        alert(`Camping ${camp?.name}, foi deletado!`),
+        goBack.push('/')
+      )
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
+
   useEffect(() => {
-    api.get(`camping/${params.id}`).then((response) => {
+    api.get(`campings/${params.id}`).then((response) => {
       setCamp(response.data);
+      console.log(response)
     });
   }, [params.id]);
 
@@ -55,7 +70,7 @@ function Camping() {
             <p>Contato: {camp.contact}</p>
           </div>
           <div className="btn-group">
-            <button className="trash">
+            <button className="trash" onClick={() => deleteCamp(camp._id)}>
               <BsFillTrashFill size="24" />
             </button>
 

@@ -12,7 +12,7 @@ function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={HomePage} />
-                <Route path="/Register" component={Register} />
+                <Route path="/register" component={Register} />
                 <Route path="/edit-camping/:id" component={EditCamping} />
                 <Route path="/camping/:id" component={Camping} />
             </Switch>

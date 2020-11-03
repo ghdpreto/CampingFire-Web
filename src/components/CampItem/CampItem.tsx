@@ -1,13 +1,11 @@
 import React from 'react';
+import { Camp } from '../../models/CampModel';
 
 // CSS
 import './CampItem.css';
 
-//ICONS
-
 //IMAGES
 import CampImage from '../../assets/images/imagem01.png';
-import { Camp } from '../../models/CampModel';
 
 interface CampItemProps {
   camp: Camp;

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { Camp } from '../models/CampModel';
+import api from '../services/api';
 
 // CSS STYLES
 import '../styles/pages/EditCamping.css';
 
 // IMAGES
 import LogoImg from '../assets/images/logo.png';
-import api from '../services/api';
-import { Camp } from '../models/CampModel';
-import CampItem from '../components/CampItem/CampItem';
 
 interface ICampParams {
   id: string;
@@ -30,6 +29,7 @@ function EditCamping() {
   }
 
   async function updateCamp(data: Camp) {
+
     await api
       .put(`campings/${camp?._id}`, data)
       .then((response) => {
@@ -65,6 +65,7 @@ function EditCamping() {
             name="name"
             defaultValue={camp?.name}
             ref={register}
+            required
           />
 
           <label>Estado</label>
@@ -74,8 +75,9 @@ function EditCamping() {
             name="location.state"
             defaultValue={camp?.location.state}
             ref={register}
+            required
           >
-            <option selected disabled>
+            <option value='' selected>
               Selecione o estado
             </option>
             <option value="AC">Acre</option>
@@ -115,15 +117,17 @@ function EditCamping() {
             defaultValue={camp?.location.city}
             name="location.city"
             ref={register}
+            required
           />
 
           <label>Endereço</label>
           <input
             type="text"
             placeholder="Digite seu endereço..."
-            name="address"
             defaultValue={camp?.location.address}
+            name="location.address"
             ref={register}
+            required
           />
 
           <label>Whatsapp</label>
@@ -133,6 +137,7 @@ function EditCamping() {
             name="contact"
             defaultValue={camp?.contact}
             ref={register}
+            required
           />
 
           <label>Sobre</label>
@@ -143,6 +148,7 @@ function EditCamping() {
             rows={8}
             defaultValue={camp?.description}
             ref={register}
+            required
           />
           <button type="submit">Salvar</button>
         </form>

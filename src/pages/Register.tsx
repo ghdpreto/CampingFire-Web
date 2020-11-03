@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // CSS STYLES
 import '../styles/pages/Register.css';
@@ -10,28 +10,25 @@ import api from '../services/api';
 
 
 function Register() {
+  const goBack = useHistory();
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [contact, setContact] = useState('');
   const [stateUf, setStateUf] = useState('');
   const [city, setCity] = useState('');
-  const [address, setAddress] = useState('');
+  const [address, setaddress] = useState('');
   const [image, setImage] = useState('');
+  const [stateSelect, setStateSelect] = useState(false)
 
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault()
-    console.log({
-      name,
-      description,
-      contact,
-      stateUf,
-      city,
-      address,
-      image,
-    })
-
+    
+    // verificando se o stado foi selecionado
+    if(stateUf === '') {
+      return setStateSelect(true)
+    }
 
     const dataBody = {
       name,
@@ -46,7 +43,9 @@ function Register() {
     }
 
     api.post(`campings`, dataBody).then((response) => {
-      console.log(response)
+
+      return alert(`Camping ${dataBody.name} foi Criado!`), 
+      goBack.push('/')
     })
   }
 
@@ -67,6 +66,7 @@ function Register() {
             placeholder="Digite o nome do local..."
             name='name'
             value={name}
+            required
             onChange={(event) => setName(event.target.value)}
           />
 
@@ -75,9 +75,10 @@ function Register() {
           id="estado" 
           name="estado"
           value={stateUf}
+          required
           onChange={event => setStateUf(event.target.value)}
           >
-            <option selected>
+            <option value='' selected>
               Selecione o estado
             </option>
             <option value="AC">Acre</option>
@@ -109,12 +110,16 @@ function Register() {
             <option value="TO">Tocantins</option>
             <option value="EX">Estrangeiro</option>
           </select>
+          {
+            stateSelect && "Selecione um stado"
+          }
 
           <label>Cidade</label>
           <input
             type="text"
             placeholder="Digite sua cidade..."
             value={city}
+            required
             onChange={(event) => setCity(event.target.value)}
           />
 
@@ -123,7 +128,8 @@ function Register() {
             type="text"
             placeholder="Digite seu endereço..."
             value={address}
-            onChange={(event) => setAddress(event.target.value)}
+            required
+            onChange={(event) => setaddress(event.target.value)}
           />
 
           <label>Whatsapp</label>
@@ -131,6 +137,7 @@ function Register() {
             type="number"
             placeholder="(xx) xxxxx-xxxx"
             value={contact}
+            required
             onChange={(event) => setContact(event.target.value)}
           />
 
@@ -142,6 +149,7 @@ function Register() {
             cols={5}
             rows={8}
             value={description}
+            required
             onChange={(event) => setDescription(event.target.value)}
           />
 

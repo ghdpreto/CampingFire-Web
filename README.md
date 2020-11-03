@@ -6,10 +6,12 @@ Projeto para cadastrar, buscar, editar e deletar camping.
 ## Pré-requisitos
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://classic.yarnpkg.com/pt-BR/docs/install/) ou [NPM](https://www.npmjs.com/get-npm)
+- [API](https://github.com/pablo-matheus/camping-fire-node-api)
 
 ## Executando a aplicação
 
-**Obs: Necessário a [API](https://github.com/pablo-matheus/camping-fire-node-api) para funcionamento correto da aplicação**
+Realizar o download da [API](https://github.com/pablo-matheus/camping-fire-node-api) e executa-la conforme o README </br>
+A mesma deve utilizar a **porta 3000** </br>
 
 Entrando na pasta do projeto
 `cd CampingFire-Web`
@@ -23,3 +25,5 @@ Rodando o projeto </br>
 `yarn start`
 ou
 `npm start`
+
+Será solicitado a alteração da porta, pressione ``Y`` e ``enter``

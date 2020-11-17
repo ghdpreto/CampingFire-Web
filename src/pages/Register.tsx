@@ -137,6 +137,7 @@ function Register() {
             type="number"
             placeholder="(xx) xxxxx-xxxx"
             value={contact}
+            maxLength={11}
             required
             onChange={(event) => setContact(event.target.value)}
           />

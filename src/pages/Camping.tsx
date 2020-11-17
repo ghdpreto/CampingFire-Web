@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { BsFillTrashFill, BsPencil } from 'react-icons/bs';
 
+import { Camp } from '../models/CampModel';
+import api from '../services/api';
+
+
 // CSS STYLES
 import '../styles/pages/Camping.css';
 
 // IMAGES
 import LogoImg from '../assets/images/logo.png';
 import CampImage from '../assets/images/imagem01.png';
-import { Camp } from '../models/CampModel';
-import api from '../services/api';
+
 
 interface CampParams {
   id: string;

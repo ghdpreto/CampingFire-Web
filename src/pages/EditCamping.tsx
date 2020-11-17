@@ -18,9 +18,9 @@ interface ICampParams {
 function EditCamping() {
   const params = useParams<ICampParams>();
   const [camp, setCamp] = useState<Camp>();
-  const { register, handleSubmit  } = useForm<Camp>();
+  const { register, handleSubmit } = useForm<Camp>();
   const goBack = useHistory();
-  
+
 
   async function loadCamp() {
     await api.get(`campings/${params.id}`).then((response) => {
@@ -34,8 +34,8 @@ function EditCamping() {
       .put(`campings/${camp?._id}`, data)
       .then((response) => {
         console.log(response)
-        return alert(`Camping ${camp?.name}, foi Atualizado!`), 
-        goBack.push(`/camping/${camp?._id}`)
+        return alert(`Camping ${camp?.name}, foi Atualizado!`),
+          goBack.push(`/camping/${camp?._id}`)
       })
       .catch((error) => {
         console.log(error);
@@ -136,6 +136,7 @@ function EditCamping() {
             placeholder="(xx) xxxxx-xxxx"
             name="contact"
             defaultValue={camp?.contact}
+            maxLength={11}
             ref={register}
             required
           />
@@ -150,6 +151,18 @@ function EditCamping() {
             ref={register}
             required
           />
+
+          <label>Image</label>
+          <input
+            type="url"
+            placeholder="Cole a URL da imagem..."
+            name='image'
+            defaultValue={camp?.image}
+            ref={register}
+            required
+          />
+
+
           <button type="submit">Salvar</button>
         </form>
       </div>

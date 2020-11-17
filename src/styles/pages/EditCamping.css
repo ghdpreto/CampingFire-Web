@@ -72,6 +72,7 @@
 }
 
 #page-edit .container button {
+  align-self: center;
   margin-top: 3rem;
   width: 18.5rem;
   height: 2.5rem;

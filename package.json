@@ -15,10 +15,11 @@
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-react": "^7.19.0",
     "formik": "^2.2.1",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
     "react-dom": "^16.14.0",
     "react-hook-form": "^6.9.6",
     "react-icons": "^3.11.0",
+    "react-native": "^0.63.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-select": "^3.1.0",
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-native": "^0.63.35",
     "@types/react-router-dom": "^5.1.6",
     "@types/react-select": "^3.0.22",
     "eslint": "^6.6.0",
